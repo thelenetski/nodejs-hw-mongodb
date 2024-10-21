@@ -13,32 +13,44 @@ import {
   updateContactSchema,
 } from '../validation/contacts.js';
 import { isValidId } from '../middlewares/isValidId.js';
+import { authenticate } from '../middlewares/authenticate.js';
+// import { ROLES } from '../constants/index.js';
+// import { checkRoles } from '../middlewares/checkRoles.js';
 
 const contactsRouter = Router();
 
-contactsRouter.get('/contacts', ctrlWrapper(getContactsController));
+contactsRouter.use(authenticate);
 
 contactsRouter.get(
-  '/contacts/:contactId',
+  '/',
+  // checkRoles(ROLES.CONTACTS_ADMIN, ROLES.CONTACTS_USER),
+  ctrlWrapper(getContactsController),
+);
+
+contactsRouter.get(
+  '/:contactId',
+  // checkRoles(ROLES.CONTACTS_ADMIN, ROLES.CONTACTS_USER),
   isValidId,
   ctrlWrapper(getContactByIdController),
 );
 
 contactsRouter.post(
-  '/contacts',
+  '/',
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
 );
 
 contactsRouter.patch(
-  '/contacts/:contactId',
+  '/:contactId',
+  // checkRoles(ROLES.CONTACTS_ADMIN, ROLES.CONTACTS_USER),
   isValidId,
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactController),
 );
 
 contactsRouter.delete(
-  '/contacts/:contactId',
+  '/:contactId',
+  // checkRoles(ROLES.CONTACTS_ADMIN, ROLES.CONTACTS_USER),
   isValidId,
   ctrlWrapper(deleteContactController),
 );

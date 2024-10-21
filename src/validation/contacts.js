@@ -2,7 +2,7 @@ import Joi from 'joi';
 import { CONTACT_TYPE } from '../constants/index.js';
 
 export const createContactSchema = Joi.object({
-  name: Joi.string().min(3).max(20).required().messages({
+  name: Joi.string().min(2).max(20).required().messages({
     'string.base': 'Username should be a string',
     'string.min': 'Username should have at least {#limit} characters',
     'string.max': 'Username should have at most {#limit} characters',
@@ -19,10 +19,11 @@ export const createContactSchema = Joi.object({
   contactType: Joi.string()
     .valid(...CONTACT_TYPE)
     .required(),
+  // userId: Joi.string(),
 });
 
 export const updateContactSchema = Joi.object({
-  name: Joi.string().min(3).max(20),
+  name: Joi.string().min(2).max(20),
   phoneNumber: Joi.string().min(3).max(20),
   email: Joi.string().email(),
   isFavourite: Joi.boolean(),
