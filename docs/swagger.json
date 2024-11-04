@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "https://contacts-app-erx5.onrender.com"
     }
   ],
   "tags": [
@@ -227,7 +227,7 @@
                   "photo": {
                     "description": "Link to contact's photo",
                     "type": "string",
-                    "example": "binary"
+                    "format": "binary"
                   }
                 }
               }
@@ -390,7 +390,7 @@
                   "photo": {
                     "description": "Link to contact's photo",
                     "type": "string",
-                    "example": "binary"
+                    "format": "binary"
                   }
                 }
               }
