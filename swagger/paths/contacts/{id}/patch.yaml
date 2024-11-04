@@ -41,7 +41,7 @@ requestBody:
           photo:
             description: "Link to contact's photo"
             type: string
-            example: binary
+            format: binary
 responses:
   '200':
     description: Patch a contact
