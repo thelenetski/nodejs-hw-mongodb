@@ -92,7 +92,7 @@
             "in": "query",
             "name": "isFavourite",
             "schema": {
-              "type": "string",
+              "type": "boolean",
               "example": "false"
             }
           }
